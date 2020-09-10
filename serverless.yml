@@ -1,0 +1,32 @@
+service: lambdas-app-layout-test
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-plugin-scripts
+
+custom:
+  scripts:
+    hooks:
+      'package:initialize': npx npm-recursive-install --skip-root --production
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'sit'}
+  region: ${opt:region, 'us-east-1'}
+  stackName: ${self:provider.stage}-${self:service}
+
+layers:
+  core:
+    path: ./layers/core
+    description: A collection of modules that are used by at least two lambdas. 
+
+package:
+  individually: true
+  exclude:
+    - .git/**
+    - functions/**
+    - layers/**
+    - node_modules/** # this should only contain local serverless plugin stuff anyway
+
+functions: ${file(./functions.yml)}

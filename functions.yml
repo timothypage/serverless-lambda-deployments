@@ -1,0 +1,47 @@
+LambdaOne:
+  handler: functions/test-lambda-1/index.handler
+  name: ${self:provider.stage}-${self:service}-LamdbaOne
+  descriptions: a test lambda
+  memorySize: 128
+  timeout: 5
+  layers:
+    - { Ref: CoreLambdaLayer }
+  package:
+    include:
+      - functions/test-lambda-1/**
+
+LambdaTwo:
+  handler: functions/test-lambda-2/index.handler
+  name: ${self:provider.stage}-${self:service}-LamdbaTwo
+  descriptions: a test lambda
+  memorySize: 128
+  timeout: 5
+  layers:
+    - { Ref: CoreLambdaLayer }
+  package:
+    include:
+      - functions/test-lambda-2/**
+
+LambdaThree:
+  handler: functions/test-lambda-3/index.handler
+  name: ${self:provider.stage}-${self:service}-LamdbaThree
+  descriptions: a test lambda
+  memorySize: 128
+  timeout: 5
+  layers:
+    - { Ref: CoreLambdaLayer }
+  package:
+    include:
+      - functions/test-lambda-3/**
+
+LambdaFour:
+  handler: functions/test-lambda-4/index.handler
+  name: ${self:provider.stage}-${self:service}-LamdbaFour
+  descriptions: a test lambda
+  memorySize: 128
+  timeout: 5
+  layers:
+    - { Ref: CoreLambdaLayer }
+  package:
+    include:
+      - functions/test-lambda-4/**
