@@ -8,7 +8,7 @@ This should fix that!
 1. each function only includes its own directory, in `functions.yml`
 1. a core layer for any shared dependencies, which should cut down on deploy time
 1. excluding all sub folders from the main `serverless.yml` deployment zip
-1. a pre-package hook that recursively installs all node modules for you, so you don't forget!
+1. **a pre-package hook that recursively installs all node modules for you**, so you don't forget!
 
 Also note, I attempted to prove that this was deploying each lambda separately by including a large ~100Mb file in each lambda, if it was deploying them together it would fail, as amazon limits the lambda size to 256MB (its just zeros, so it zips up quite nicely!)
 
